@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, Menu, X } from "lucide-react";
+import { motionEasings, motionTransitions } from "@/constants/motion";
 
 const navLinks = [
   { label: "Features", href: "/#features" },
@@ -57,6 +58,7 @@ const Navbar = () => {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
+            transition={motionTransitions.enterFast}
             className="absolute top-16 left-0 right-0 bg-background border-b border-border p-6 flex flex-col gap-4 md:hidden shadow-lg"
           >
             {navLinks.map((link) => (

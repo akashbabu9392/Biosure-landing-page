@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import AnimatedSection from "../AnimatedSection";
 import { Bell, FileText, LineChart, LockKeyhole, Package, UsersRound } from "lucide-react";
+import { motionTransitions } from "@/constants/motion";
 
 const features = [
   { icon: Package, title: "Chain of Custody, Fully Digital", desc: "Create, submit, and track CoC forms electronically. Every sample is tracked from submission through result entry with a complete audit trail.", tag: "Full CRUD · Audit Trail", large: true },
@@ -41,6 +42,7 @@ const FeaturesSection = () => (
                   <AnimatedSection key={f.title} delay={i * 0.06}>
                     <motion.div
                       whileHover={{ y: -2 }}
+                      transition={motionTransitions.hoverLift}
                       className={`premium-card rounded-2xl p-6 group transition-all ${f.large ? "lg:col-span-2 lg:row-span-1" : ""}`}
                     >
                       <div className="w-10 h-10 rounded-xl bg-primary/20 flex items-center justify-center mb-4 text-primary">

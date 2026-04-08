@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import Layout from "@/components/Layout";
 import AnimatedSection from "@/components/AnimatedSection";
+import { motionTransitions } from "@/constants/motion";
 
 const products = [
   {
@@ -77,7 +78,7 @@ const ProductPage = ({ slug }: ProductPageProps) => {
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+          transition={motionTransitions.enterFast}
           className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-xs font-medium text-primary mb-6"
         >
           Product
@@ -85,7 +86,7 @@ const ProductPage = ({ slug }: ProductPageProps) => {
         <motion.h1
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
+          transition={{ ...motionTransitions.enter, delay: 0.1 }}
           className="text-[clamp(2.5rem,5vw,4rem)] font-bold leading-[1.05] tracking-tight max-w-[800px] mx-auto"
         >
           {product.title}
@@ -93,7 +94,7 @@ const ProductPage = ({ slug }: ProductPageProps) => {
         <motion.p
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          transition={{ ...motionTransitions.enter, delay: 0.2 }}
           className="mt-2 text-lg text-primary font-medium"
         >
           {product.subtitle}
@@ -101,7 +102,7 @@ const ProductPage = ({ slug }: ProductPageProps) => {
         <motion.p
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
+          transition={{ ...motionTransitions.enter, delay: 0.3 }}
           className="mt-6 max-w-[560px] mx-auto text-muted-foreground leading-relaxed"
         >
           {product.desc}
@@ -109,7 +110,7 @@ const ProductPage = ({ slug }: ProductPageProps) => {
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
+          transition={{ ...motionTransitions.enter, delay: 0.4 }}
           className="flex gap-3 mt-8 justify-center"
         >
           <a href="#" className="inline-flex items-center gap-2 px-7 py-3 rounded-lg bg-primary text-primary-foreground text-sm font-semibold hover:bg-primary/90 transition-all shadow-md shadow-primary/25">
@@ -137,6 +138,7 @@ const ProductPage = ({ slug }: ProductPageProps) => {
               <AnimatedSection key={f.title} delay={i * 0.08}>
                 <motion.div
                   whileHover={{ y: -3 }}
+                  transition={motionTransitions.hoverLift}
                   className="bg-background border border-border rounded-2xl p-7 group relative overflow-hidden h-full transition-all hover:shadow-md"
                 >
                   <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-primary to-primary/50 opacity-0 group-hover:opacity-100 transition-opacity" />

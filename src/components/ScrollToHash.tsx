@@ -18,7 +18,10 @@ export default function ScrollToHash() {
 
   useEffect(() => {
     const hash = location.hash?.replace(/^#/, "");
-    if (!hash) return;
+    if (!hash) {
+      window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+      return;
+    }
 
     const id = decodeURIComponent(hash);
     let attempts = 0;

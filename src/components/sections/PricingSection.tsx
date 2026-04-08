@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import AnimatedSection from "../AnimatedSection";
+import { motionTransitions } from "@/constants/motion";
 
 const plans = [
   {
@@ -58,6 +59,7 @@ const PricingSection = () => (
           <AnimatedSection key={p.name} delay={i * 0.08}>
             <motion.div
               whileHover={{ y: -4 }}
+              transition={motionTransitions.hoverLift}
               className={`bg-background border rounded-2xl p-7 relative transition-all h-full flex flex-col ${
                 p.featured
                   ? "border-primary shadow-lg shadow-primary/10"

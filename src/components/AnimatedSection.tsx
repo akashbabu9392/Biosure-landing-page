@@ -1,18 +1,26 @@
 import { motion } from "framer-motion";
 import { ReactNode } from "react";
+import { motionTransitions, motionVariants } from "@/constants/motion";
 
 interface AnimatedSectionProps {
   children: ReactNode;
   className?: string;
   delay?: number;
+  variant?: keyof typeof motionVariants;
 }
 
-const AnimatedSection = ({ children, className = "", delay = 0 }: AnimatedSectionProps) => (
+const AnimatedSection = ({
+  children,
+  className = "",
+  delay = 0,
+  variant = "fadeUp",
+}: AnimatedSectionProps) => (
   <motion.div
-    initial={{ opacity: 0, y: 32 }}
-    whileInView={{ opacity: 1, y: 0 }}
+    variants={motionVariants[variant]}
+    initial="hidden"
+    whileInView="visible"
     viewport={{ once: true, margin: "-60px" }}
-    transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94], delay }}
+    transition={{ ...motionTransitions.enter, delay }}
     className={className}
   >
     {children}

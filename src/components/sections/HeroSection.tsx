@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import AnimatedSection from "../AnimatedSection";
 import { assets } from "@/constants/assets";
+import { motionTransitions } from "@/constants/motion";
 
 const HeroSection = () => (
   <section className="relative pt-16 sm:pt-20 pb-20 px-6 text-center overflow-hidden">
@@ -11,7 +12,7 @@ const HeroSection = () => (
     <motion.div
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: 0.1 }}
+      transition={{ ...motionTransitions.enterFast, delay: 0.1 }}
       className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-xs font-medium text-primary mb-7"
     >
       <span className="w-1.5 h-1.5 rounded-full bg-primary" />
@@ -21,7 +22,7 @@ const HeroSection = () => (
     <motion.h1
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, delay: 0.2 }}
+      transition={{ ...motionTransitions.enter, delay: 0.2 }}
       className="text-[clamp(2.5rem,5.5vw,4.5rem)] font-bold leading-[1.08] tracking-tight max-w-[820px] mx-auto"
     >
       From sample intake to <span className="text-gradient">signed report</span> in minutes
@@ -30,7 +31,7 @@ const HeroSection = () => (
     <motion.p
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, delay: 0.3 }}
+      transition={{ ...motionTransitions.enter, delay: 0.3 }}
       className="mt-6 max-w-[540px] mx-auto text-base leading-relaxed text-muted-foreground"
     >
       Simple and secure lab management, ready to use out of the box. Automate your entire sample-to-report workflow — with a free client portal
@@ -40,7 +41,7 @@ const HeroSection = () => (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, delay: 0.4 }}
+      transition={{ ...motionTransitions.enter, delay: 0.4 }}
       className="flex gap-3 mt-8 flex-wrap justify-center"
     >
       <a

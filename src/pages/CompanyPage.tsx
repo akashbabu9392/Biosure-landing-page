@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import Layout from "@/components/Layout";
 import AnimatedSection from "@/components/AnimatedSection";
+import { motionTransitions } from "@/constants/motion";
 
 const investors = [
   { name: "Pacific Ventures", desc: "Backing healthcare technology innovation since 2012." },
@@ -33,7 +34,7 @@ const CompanyPage = () => (
       <motion.h1
         initial={{ opacity: 0, y: 24 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7 }}
+        transition={motionTransitions.enter}
         className="text-[clamp(2.5rem,6vw,4.5rem)] font-bold leading-[1.05] tracking-tight max-w-[800px] mx-auto text-white"
       >
         It all starts with the lab
@@ -41,7 +42,7 @@ const CompanyPage = () => (
       <motion.p
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7, delay: 0.15 }}
+        transition={{ ...motionTransitions.enter, delay: 0.15 }}
         className="mt-6 max-w-[600px] mx-auto text-white/60 leading-relaxed"
       >
         BioSure is on a mission to modernize environmental monitoring labs <strong className="text-white/90 underline decoration-primary/50">once and for all</strong>. We are a team dedicated to providing the best laboratory experience with obsessive attention to every detail.
@@ -64,6 +65,7 @@ const CompanyPage = () => (
             <AnimatedSection key={inv.name} delay={i * 0.1}>
               <motion.div
                 whileHover={{ y: -3, boxShadow: "0 8px 30px rgba(0,0,0,0.08)" }}
+                transition={motionTransitions.hoverLift}
                 className="bg-background border border-border rounded-2xl p-6 transition-all"
               >
                 <h3 className="text-base font-semibold mb-2">{inv.name}</h3>
@@ -107,6 +109,7 @@ const CompanyPage = () => (
             <AnimatedSection key={v.title} delay={i * 0.08}>
               <motion.div
                 whileHover={{ y: -3 }}
+                transition={motionTransitions.hoverLift}
                 className="bg-background border border-border rounded-2xl p-7 transition-all hover:shadow-md"
               >
                 <div className="text-2xl mb-4">{v.icon}</div>
@@ -148,7 +151,7 @@ const CompanyPage = () => (
     <section className="py-20 px-6 border-t border-border">
       <div className="container grid grid-cols-1 md:grid-cols-2 gap-6">
         <AnimatedSection>
-          <motion.div whileHover={{ y: -3 }} className="bg-muted/50 border border-border rounded-2xl p-8 transition-all hover:shadow-md">
+          <motion.div whileHover={{ y: -3 }} transition={motionTransitions.hoverLift} className="bg-muted/50 border border-border rounded-2xl p-8 transition-all hover:shadow-md">
             <div className="text-xs text-primary font-semibold uppercase tracking-wider mb-2">Join BioSure</div>
             <h3 className="text-xl font-bold mb-3">Start now, no strings attached</h3>
             <p className="text-sm text-muted-foreground leading-relaxed mb-6">
@@ -160,7 +163,7 @@ const CompanyPage = () => (
           </motion.div>
         </AnimatedSection>
         <AnimatedSection delay={0.1}>
-          <motion.div whileHover={{ y: -3 }} className="bg-muted/50 border border-border rounded-2xl p-8 transition-all hover:shadow-md">
+          <motion.div whileHover={{ y: -3 }} transition={motionTransitions.hoverLift} className="bg-muted/50 border border-border rounded-2xl p-8 transition-all hover:shadow-md">
             <div className="text-xs text-primary font-semibold uppercase tracking-wider mb-2">Careers</div>
             <h3 className="text-xl font-bold mb-3">Join a team dedicated to their craft</h3>
             <p className="text-sm text-muted-foreground leading-relaxed mb-6">
