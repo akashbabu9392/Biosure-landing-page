@@ -1,6 +1,6 @@
-import { motion } from "framer-motion";
 import AnimatedSection from "../AnimatedSection";
 import { testimonialsContent } from "@/constants/testimonials";
+import PremiumCard from "@/components/common/PremiumCard";
 
 const CompanyMark = ({ company }: { company: string }) => (
   <div className="flex items-center gap-2 text-[0.78rem] font-semibold text-foreground/70">
@@ -26,25 +26,17 @@ const TestimonialCard = ({
   initials: string;
   variant?: "default" | "featured" | "logo";
 }) => (
-  <motion.div
-    whileHover={{
-      y: -3,
-      boxShadow:
-        variant === "featured"
-          ? "0 18px 50px rgba(0,0,0,0.18)"
-          : variant === "logo"
-            ? "0 14px 44px rgba(0,0,0,0.12)"
-            : "0 14px 44px rgba(0,0,0,0.12)",
-    }}
-    className={`rounded-2xl border transition-all h-full hover:-translate-y-[1px] ${
+  <PremiumCard
+    hoverLiftY={-3}
+    enableSpotlight={variant !== "featured"}
+    spotlightColor={variant === "logo" ? "rgba(88, 101, 242, 0.10)" : "rgba(168, 85, 247, 0.10)"}
+    className={`rounded-2xl border transition-all h-full ${
       variant === "featured"
         ? "bg-gradient-to-br from-[#5B5FF6] via-primary to-[#7C3AED] text-primary-foreground border-white/15 shadow-lg shadow-primary/20"
-        : variant === "logo"
-          ? "bg-background border-border shadow-sm"
-          : "bg-background border-border shadow-sm"
+        : "bg-background border-border shadow-sm"
     }`}
+    surfaceClassName={`p-7 flex flex-col h-full ${variant === "logo" ? "gap-5" : ""}`}
   >
-    <div className={`p-7 flex flex-col h-full ${variant === "logo" ? "gap-5" : ""}`}>
       <div className="flex items-center justify-between gap-4">
         <CompanyMark company={company} />
         <div className={`text-[0.7rem] tracking-widest ${variant === "featured" ? "text-primary-foreground/80" : "text-yellow-500"}`}>★★★★★</div>
@@ -82,8 +74,7 @@ const TestimonialCard = ({
           {initials}
         </div>
       </div>
-    </div>
-  </motion.div>
+  </PremiumCard>
 );
 
 const TestimonialsSection = () => (

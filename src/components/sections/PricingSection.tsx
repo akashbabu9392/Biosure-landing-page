@@ -1,6 +1,5 @@
-import { motion } from "framer-motion";
 import AnimatedSection from "../AnimatedSection";
-import { motionTransitions } from "@/constants/motion";
+import PremiumCard from "@/components/common/PremiumCard";
 
 const plans = [
   {
@@ -57,9 +56,10 @@ const PricingSection = () => (
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-14">
         {plans.map((p, i) => (
           <AnimatedSection key={p.name} delay={i * 0.08}>
-            <motion.div
-              whileHover={{ y: -4 }}
-              transition={motionTransitions.hoverLift}
+            <PremiumCard
+              hoverLiftY={-4}
+              enableSpotlight={!p.featured}
+              spotlightColor="rgba(88, 101, 242, 0.10)"
               className={`bg-background border rounded-2xl p-7 relative transition-all h-full flex flex-col ${
                 p.featured
                   ? "border-primary shadow-lg shadow-primary/10"
@@ -94,7 +94,7 @@ const PricingSection = () => (
               >
                 {p.cta}
               </button>
-            </motion.div>
+            </PremiumCard>
           </AnimatedSection>
         ))}
       </div>

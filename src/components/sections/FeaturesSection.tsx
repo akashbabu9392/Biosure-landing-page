@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import AnimatedSection from "../AnimatedSection";
 import { Bell, FileText, LineChart, LockKeyhole, Package, UsersRound } from "lucide-react";
-import { motionTransitions } from "@/constants/motion";
+import PremiumCard from "@/components/common/PremiumCard";
 
 const features = [
   { icon: Package, title: "Chain of Custody, Fully Digital", desc: "Create, submit, and track CoC forms electronically. Every sample is tracked from submission through result entry with a complete audit trail.", tag: "Full CRUD · Audit Trail", large: true },
@@ -40,10 +40,11 @@ const FeaturesSection = () => (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {features.map((f, i) => (
                   <AnimatedSection key={f.title} delay={i * 0.06}>
-                    <motion.div
-                      whileHover={{ y: -2 }}
-                      transition={motionTransitions.hoverLift}
-                      className={`premium-card rounded-2xl p-6 group transition-all ${f.large ? "lg:col-span-2 lg:row-span-1" : ""}`}
+                    <PremiumCard
+                      hoverLiftY={-2}
+                      className={`premium-card rounded-2xl group transition-all ${f.large ? "lg:col-span-2 lg:row-span-1" : ""}`}
+                      surfaceClassName="p-6"
+                      spotlightColor="rgba(168, 85, 247, 0.12)"
                     >
                       <div className="w-10 h-10 rounded-xl bg-primary/20 flex items-center justify-center mb-4 text-primary">
                         <f.icon className="w-5 h-5" aria-hidden="true" />
@@ -53,7 +54,7 @@ const FeaturesSection = () => (
                       <span className="inline-flex items-center mt-4 px-2.5 py-0.5 rounded-full text-[0.7rem] font-medium bg-primary/15 text-primary">
                         {f.tag}
                       </span>
-                    </motion.div>
+                    </PremiumCard>
                   </AnimatedSection>
                 ))}
               </div>
