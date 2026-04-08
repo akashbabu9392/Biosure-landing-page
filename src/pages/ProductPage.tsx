@@ -175,4 +175,3 @@ const ProductPage = ({ slug }: ProductPageProps) => {
 };
 
 export default ProductPage;
-export { products };
