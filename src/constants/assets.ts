@@ -1,5 +1,5 @@
 export const assets = {
-  dashboardPreviewSrc: "/dashboard.jpeg",
+  dashboardPreviewSrc: "/Rounded%20rectangle.png",
   dashboardPreviewAlt: "BioSureLab dashboard preview",
 } as const;
 

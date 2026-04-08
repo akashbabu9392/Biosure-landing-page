@@ -55,14 +55,6 @@ const HeroSection = () => (
     <AnimatedSection className="mt-16 w-full max-w-[1100px] mx-auto" delay={0.5}>
       <div className="relative isolate">
         <div className="relative z-10 rounded-2xl border border-border bg-card shadow-2xl shadow-black/20 overflow-hidden">
-          <div className="flex items-center gap-2 px-5 py-3 bg-muted/50 border-b border-border">
-            <div className="w-2.5 h-2.5 rounded-full bg-[#ff5f57]" />
-            <div className="w-2.5 h-2.5 rounded-full bg-[#febc2e]" />
-            <div className="w-2.5 h-2.5 rounded-full bg-[#28c840]" />
-            <div className="ml-3 bg-background rounded-md px-3.5 py-0.5 text-[0.72rem] text-muted-foreground border border-border">
-              Dashboard
-            </div>
-          </div>
           <img
             src={assets.dashboardPreviewSrc}
             alt={assets.dashboardPreviewAlt}
