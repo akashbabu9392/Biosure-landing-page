@@ -1,4 +1,5 @@
 import AnimatedSection from "../AnimatedSection";
+import { Clock, PhoneOff, ShieldCheck } from "lucide-react";
 
 const roiRows = [
   { label: "Report generation labor", sub: "5 hrs/week × $50/hr", manual: "$13,000/yr", biosure: "$0" },
@@ -9,9 +10,9 @@ const roiRows = [
 ];
 
 const benefits = [
-  { icon: "⏱", title: "2–3 hours saved per report", desc: "Report generation drops from hours to seconds. At 48 reports/month, that's 96–144 hours freed every month." },
-  { icon: "📞", title: "Zero status-update calls", desc: "Client portal self-service eliminates the constant \"Is my report ready?\" phone calls and emails." },
-  { icon: "🛡", title: "Inspection-ready, always", desc: "Full audit trails and electronic signatures. Walk into any USP 797 inspection with complete confidence." },
+  { icon: Clock, title: "2–3 hours saved per report", desc: "Report generation drops from hours to seconds. At 48 reports/month, that's 96–144 hours freed every month." },
+  { icon: PhoneOff, title: "Zero status-update calls", desc: "Client portal self-service eliminates the constant \"Is my report ready?\" phone calls and emails." },
+  { icon: ShieldCheck, title: "Inspection-ready, always", desc: "Full audit trails and electronic signatures. Walk into any USP 797 inspection with complete confidence." },
 ];
 
 const ROISection = () => (
@@ -59,7 +60,9 @@ const ROISection = () => (
           <div className="flex flex-col gap-5">
             {benefits.map((b) => (
               <div key={b.title} className="flex items-start gap-4">
-                <div className="w-10 h-10 shrink-0 rounded-xl bg-primary/10 flex items-center justify-center text-lg">{b.icon}</div>
+                <div className="w-10 h-10 shrink-0 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
+                  <b.icon className="w-5 h-5" aria-hidden="true" />
+                </div>
                 <div>
                   <div className="text-sm font-semibold mb-0.5">{b.title}</div>
                   <div className="text-sm text-muted-foreground">{b.desc}</div>

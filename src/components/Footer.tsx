@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import BiosureLogo from "./BiosureLogo";
 
 const footerCols = [
   {
@@ -39,17 +38,10 @@ const Footer = () => (
   <footer className="border-t border-border pt-14 pb-8 px-6 bg-background">
     <div className="max-w-[1200px] mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
       <div>
-        <BiosureLogo />
+        <img src="/BiosureLab-logo.svg" alt="BioSureLab" className="h-7 w-auto" />
         <p className="text-sm text-muted-foreground leading-relaxed mt-3 max-w-[220px]">
           The modern LIMS for environmental monitoring laboratories.
         </p>
-        <div className="flex gap-2 mt-4">
-          {["SOC 2", "USP 797", "21 CFR"].map((b) => (
-            <span key={b} className="px-2 py-0.5 rounded-md border border-border text-[0.68rem] text-muted-foreground font-medium">
-              {b}
-            </span>
-          ))}
-        </div>
       </div>
       {footerCols.map((col) => (
         <div key={col.title}>

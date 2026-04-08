@@ -49,6 +49,21 @@
 }
 
 @layer base {
+  html,
+  body {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  #root {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+  }
+
   * {
     @apply border-border;
   }
@@ -86,5 +101,126 @@
   .clerk-card:hover {
     box-shadow: 0 8px 30px rgba(0,0,0,0.08);
     border-color: hsl(220 13% 85%);
+  }
+
+  .premium-panel-bleed {
+    width: 100%;
+    position: relative;
+    isolation: isolate;
+  }
+
+  .premium-panel-bleed::before,
+  .premium-panel-bleed::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 400px;
+    pointer-events: none;
+    z-index: 0;
+    filter: blur(120px);
+    opacity: 0.25;
+  }
+
+  .premium-panel-bleed {
+    position: relative;
+    width: 100%;
+  }
+
+  .premium-panel-bleed::before {
+    left: -250px;
+    background: radial-gradient(circle, rgba(88, 101, 242, 0.4), transparent 70%);
+  }
+
+  .premium-panel-bleed::after {
+    right: -250px;
+    background: radial-gradient(circle, rgba(168, 85, 247, 0.4), transparent 70%);
+  }
+
+  .premium-panel {
+    --panel-radius: 0px;
+    --panel-notch: 34px;
+    --panel-notch-depth: 18px;
+    position: relative;
+    isolation: isolate;
+    border-radius: var(--panel-radius);
+    padding: 1px;
+    overflow: hidden;
+    width: 100vw;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow:
+      inset 0 0 40px rgba(255, 255, 255, 0.03),
+      0 0 80px rgba(88, 101, 242, 0.15);
+    clip-path: polygon(
+      0% 0%,
+      calc(50% - var(--panel-notch)) 0%,
+      50% var(--panel-notch-depth),
+      calc(50% + var(--panel-notch)) 0%,
+      100% 0%,
+      100% 100%,
+      calc(50% + var(--panel-notch)) 100%,
+      50% calc(100% - var(--panel-notch-depth)),
+      calc(50% - var(--panel-notch)) 100%,
+      0% 100%
+    );
+  }
+
+  .premium-panel::before {
+    content: "";
+    position: absolute;
+    inset: -18px;
+    z-index: -2;
+    background: linear-gradient(135deg, rgba(88, 101, 242, 0.38), rgba(124, 58, 237, 0.32), rgba(0, 0, 0, 0));
+    filter: blur(28px);
+    opacity: 0.7;
+    clip-path: inherit;
+    pointer-events: none;
+  }
+
+  .premium-panel::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(90deg, rgba(88, 101, 242, 0.22), rgba(124, 58, 237, 0.40), rgba(88, 101, 242, 0.18));
+    opacity: 0.55;
+    clip-path: inherit;
+    pointer-events: none;
+    mix-blend-mode: screen;
+  }
+
+  .premium-panel__surface {
+    border-radius: calc(var(--panel-radius) - 1px);
+    padding: 0;
+    background:
+      radial-gradient(circle at 0% 55%, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.26) 55%, rgba(0, 0, 0, 0)),
+      radial-gradient(circle at 100% 55%, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.26) 55%, rgba(0, 0, 0, 0)),
+      radial-gradient(circle at 50% 40%, rgba(88, 101, 242, 0.15), transparent 60%),
+      linear-gradient(180deg, #0b0f19 0%, #070a12 100%);
+    clip-path: inherit;
+  }
+
+  @media (max-width: 420px) {
+    .premium-panel {
+      --panel-notch: 26px;
+      --panel-notch-depth: 14px;
+    }
+
+    .premium-panel-bleed::before,
+    .premium-panel-bleed::after {
+      width: 320px;
+    }
+  }
+
+  .premium-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(10px);
+  }
+
+  .premium-card:hover {
+    border-color: rgba(255, 255, 255, 0.10);
+    background: rgba(255, 255, 255, 0.03);
   }
 }
